@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr-CH" data-page="rendez-vous">
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rendez-vous avec Beat</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Prendre rendez-vous pour un massage avec Beat Hächler : le jeudi à Nyon, Ruelle de la Poterne 13, au 079 381 24 67 ; le mercredi et le vendredi aux Bains des Pâquis à Genève, en ligne.">
+  <meta name="theme-color" content="#E8ECEA">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="Beat Hächler, massages à Nyon et Genève">
+  <meta property="og:title" content="Rendez-vous avec Beat">
+  <meta property="og:description" content="Prendre rendez-vous pour un massage avec Beat Hächler : le jeudi à Nyon, Ruelle de la Poterne 13, au 079 381 24 67 ; le mercredi et le vendredi aux Bains des Pâquis à Genève, en ligne.">
+  <meta property="og:image" content="assets/img/grok/rive-crepuscule-16x9-1168.webp">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function (d) {
+      var h = d.documentElement, c = null, r = false;
+      h.classList.add("js");
+      try { c = localStorage.getItem("bh-calm"); } catch (e) {}
+      try { r = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+      if (c === "1" || (c === null && r)) h.classList.add("calm");
+      try {
+        if (!sessionStorage.getItem("bh-visited") && h.getAttribute("data-page") === "accueil") h.classList.add("is-first");
+        if (sessionStorage.getItem("bh-veil") === "1") h.classList.add("is-veiled");
+      } catch (e) { if (h.getAttribute("data-page") === "accueil") h.classList.add("is-first"); }
+      setTimeout(function () { if (!h.classList.contains("app-ready")) h.classList.remove("is-first", "is-veiled"); }, 3500);
+    })(document);
+  </script>
+  
+</head>
+<body class="page-rendez-vous">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  
+  <div class="veil" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="currentColor" d="M0 120 C 240 120 480 120 720 120 S 1200 120 1440 120 V 120 H 0 Z"/></svg>
+    <div class="veil-body"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Beat Hächler, accueil">
+      <img src="assets/img/site/logo-beat-haechler-1218.webp" srcset="assets/img/site/logo-beat-haechler-400.webp 400w, assets/img/site/logo-beat-haechler-800.webp 800w, assets/img/site/logo-beat-haechler-1218.webp 1218w" sizes="54px" width="1218" height="734" alt="" decoding="async" loading="eager" fetchpriority="high">
+      <span class="brand-text"><span class="brand-name">Beat Hächler</span><span class="brand-sub">Massages · Nyon &amp; Genève</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+          <li><a href="massages.html">Massages</a></li>
+          <li><a href="cours-de-massage.html">Cours</a></li>
+          <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+      </ul>
+    </nav>
+    <button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button>
+    <a class="btn btn--small btn-rdv magnetic" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+  </header>
+
+  <div class="menu on-dark" id="menu" hidden>
+    <nav aria-label="Menu">
+      <ul class="menu-list">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="massages.html">Les massages</a></li>
+        <li class="sub"><a href="massage-relaxant.html">Massage relaxant</a></li>
+        <li class="sub"><a href="massage-anti-tensions.html">Massage anti-tensions</a></li>
+        <li class="sub"><a href="drainage-lymphatique.html">Drainage lymphatique</a></li>
+        <li><a href="cours-de-massage.html">Cours de massage</a></li>
+        <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="rendez-vous.html">Rendez-vous</a></li>
+      </ul>
+    </nav>
+    <div class="menu-foot">
+      <p class="contact-line"><span class="val num">079 381 24 67</span> · <span class="val">contact@beathaechler.ch</span></p>
+      <p class="actions"><button class="btn btn--light btn--small" type="button" data-breath-open><span class="btn-label">Respirer une minute</span></button><button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button></p>
+    </div>
+  </div>
+
+  <main id="contenu">
+<section class="hero" data-tex="assets/img/grok/rive-crepuscule-16x9-1168.webp" data-tex-m="assets/img/grok/rive-crepuscule-9x16-784.webp" data-ratio="1168,784" data-ratio-m="784,1168" data-focus="0.5,0.55" data-drop="0.55,0.75" data-drop-m="0.5,0.7" data-water="0.58" data-disp="assets/img/grok/texture-eau-calme-800.webp" data-fog="#E6E8EE" data-tint="#B9A9B8" aria-labelledby="t-hero">
+      <canvas class="hero-gl" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"><img src="assets/img/grok/rive-crepuscule-16x9-1168.webp" srcset="assets/img/grok/rive-crepuscule-16x9-800.webp 800w, assets/img/grok/rive-crepuscule-16x9-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="" decoding="async" loading="eager" fetchpriority="high"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow" data-hero-in>Rendez-vous</p>
+        <h1 class="display" id="t-hero" data-split>Nyon le jeudi, <em>Genève en milieu de semaine.</em></h1>
+        <div class="today-big" data-hero-in>
+          <p class="eyebrow">Aujourd'hui</p>
+          <p class="h3" data-today-title>Jeudi à Nyon, mercredi et vendredi à Genève.</p>
+          <p data-today-next>Appelez le 079 381 24 67 pour Nyon, réservez en ligne pour Genève.</p>
+          <p class="contact-line"><a class="val num" href="tel:+41793812467">079 381 24 67</a><button class="copy" type="button" data-copy="079 381 24 67" style="background:var(--mist);color:var(--lake)">Copier</button></p>
+        </div>
+      </div>
+      <div class="wrap hero-foot" data-hero-in>
+        <span></span>
+        <a class="scroll-cue" href="#lieux"><span class="drop" aria-hidden="true"></span>Défiler</a>
+      </div>
+    </section>
+
+    <section class="section section--fog" id="lieux" aria-label="Les deux lieux">
+      <div class="wrap loc-grid">
+        <article class="loc" id="nyon" data-place="nyon">
+          <figure class="frame"><img src="assets/img/site/cabinet-entree-voute-800.webp" srcset="assets/img/site/cabinet-entree-voute-480.webp 480w, assets/img/site/cabinet-entree-voute-800.webp 800w" sizes="(max-width: 860px) 100vw, 50vw" width="800" height="600" alt="L&#x27;accueil du cabinet de Nyon, poutres et voûte en pierre" decoding="async" loading="lazy" style="object-position:50% 55%"></figure>
+          <div class="loc-body">
+            <p class="place-day">Le jeudi</p>
+            <h2>Nyon</h2>
+            <dl class="dl">
+              <dt>Adresse</dt><dd>Ruelle de la Poterne 13, 1260 Nyon</dd>
+              <dt>Tarifs</dt><dd class="num">60 min CHF 100.– · 40 min CHF 70.–</dd>
+              <dt>Réserver</dt><dd>Par téléphone au <a class="num" href="tel:+41793812467">079 381 24 67</a></dd>
+              <dt>Horaires</dt><dd><span class="note">À compléter par Beat</span></dd>
+            </dl>
+            <p class="small">Pas de remboursement par les assurances complémentaires.</p>
+          </div>
+        </article>
+        <article class="loc" id="geneve" data-place="geneve">
+          <figure class="frame"><img src="assets/img/grok/reflets-lac-784.webp" srcset="assets/img/grok/reflets-lac-520.webp 520w, assets/img/grok/reflets-lac-784.webp 784w" sizes="(max-width: 860px) 100vw, 50vw" width="784" height="1168" alt="Reflets du soir sur une eau doucement ridée" decoding="async" loading="lazy" style="object-position:50% 40%"></figure>
+          <div class="loc-body">
+            <p class="place-day">Le mercredi et le vendredi</p>
+            <h2>Genève</h2>
+            <dl class="dl">
+              <dt>Adresse</dt><dd>Bains des Pâquis, Quai du Mont-Blanc 30, 1201 Genève</dd>
+              <dt>Avec</dt><dd>L'association Mains des Bains</dd>
+              <dt>Tarif</dt><dd class="num">50 min CHF 80.–</dd>
+              <dt>Réserver</dt><dd>En ligne sur l'agenda de l'association, sur place, ou au <span class="num">022 731 41 34</span> (lundi, mercredi et vendredi, 9h – 12h)</dd>
+            </dl>
+            <ul class="small" style="padding-left:1.1em;display:grid;gap:4px">
+              <li>De septembre à mai, les rendez-vous ont lieu à La Rotonde.</li>
+              <li>Pas de paiement par carte.</li>
+              <li>Prévoir une serviette ou un paréo.</li>
+            </ul>
+            <p class="note-block"><span class="note">Infos du site des Bains, à vérifier</span></p>
+            <p><a class="btn magnetic" href="https://mains-des-bains.agenda.ch" target="_blank" rel="noopener"><span class="btn-label">Réserver en ligne à Genève</span></a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--mist wave-top" id="demande" aria-labelledby="t-demande">
+      <div class="wrap split-2" style="align-items:start">
+        <div class="col-a stack-lg sticky-col">
+          <p class="eyebrow">Nyon · le jeudi</p>
+          <h2 class="h2" id="t-demande" data-split>Demander <em>un rendez-vous.</em></h2>
+          <p class="lede">Choisissez votre massage, un jeudi et un moment de la journée. Beat vous rappelle pour confirmer l'heure.</p>
+          <p class="note-block"><span class="note">Fonction proposée, à valider par Beat</span></p>
+        </div>
+        <div class="col-b">
+          <div class="form-card">
+            <ol class="form-steps" aria-label="Étapes">
+              <li aria-current="step">1. Massage</li><li>2. Jour</li><li>3. Coordonnées</li>
+            </ol>
+            <form data-booking novalidate>
+              <fieldset class="fieldset" data-step>
+                <legend>Quel massage ?</legend>
+                <div class="options" role="radiogroup" aria-label="Massage">
+                  <label class="opt"><input type="radio" name="massage" value="Massage relaxant" required checked><span><b>Massage relaxant</b><small>Lâcher prise</small></span></label>
+                  <label class="opt"><input type="radio" name="massage" value="Massage anti-tensions"><span><b>Massage anti-tensions</b><small>Points gâchettes, Tecar</small></span></label>
+                  <label class="opt"><input type="radio" name="massage" value="Drainage lymphatique"><span><b>Drainage lymphatique</b><small>Légèreté</small></span></label>
+                  <label class="opt"><input type="radio" name="massage" value="À choisir avec Beat"><span><b>Je ne sais pas</b><small>On choisit ensemble</small></span></label>
+                </div>
+                <div class="options" role="radiogroup" aria-label="Durée">
+                  <label class="opt"><input type="radio" name="duree" value="60" required checked><span><b>60 minutes</b><small class="num">CHF 100.–</small></span></label>
+                  <label class="opt"><input type="radio" name="duree" value="40"><span><b>40 minutes</b><small class="num">CHF 70.–</small></span></label>
+                </div>
+              </fieldset>
+              <fieldset class="fieldset" data-step hidden>
+                <legend>Quel jeudi ?</legend>
+                <div class="options" data-dates role="radiogroup" aria-label="Jeudi"></div>
+                <div class="field">
+                  <label for="b-moment">Moment préféré</label>
+                  <select id="b-moment" name="moment">
+                    <option>Matin</option><option>Début d'après-midi</option><option>Fin de journée</option><option>Peu importe</option>
+                  </select>
+                </div>
+              </fieldset>
+              <fieldset class="fieldset" data-step hidden>
+                <legend>Vos coordonnées</legend>
+                <div class="fields-2">
+                  <div class="field"><label for="b-prenom">Prénom</label><input id="b-prenom" name="prenom" autocomplete="given-name" required></div>
+                  <div class="field"><label for="b-nom">Nom</label><input id="b-nom" name="nom" autocomplete="family-name" required></div>
+                </div>
+                <div class="fields-2">
+                  <div class="field"><label for="b-tel">Téléphone</label><input id="b-tel" name="tel" type="tel" autocomplete="tel" required></div>
+                  <div class="field"><label for="b-email">E-mail (facultatif)</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+                </div>
+                <div class="field"><label for="b-msg">Un mot pour Beat (facultatif)</label><textarea id="b-msg" name="message"></textarea></div>
+                <p class="small">Démonstration : rien n'est envoyé.</p>
+              </fieldset>
+              <div class="form-nav" style="margin-top:20px">
+                <button class="btn btn--ghost" type="button" data-prev hidden><span class="btn-label">Retour</span></button>
+                <button class="btn" type="submit" data-next data-last="Envoyer la demande"><span class="btn-label">Continuer</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--fog wave-top" aria-labelledby="t-carte">
+      <div class="wrap stack-lg">
+        <div class="stack">
+          <p class="eyebrow">Sur la carte</p>
+          <h2 class="h2" id="t-carte" data-split>Deux rives <em>du même lac.</em></h2>
+        </div>
+        <div class="map-wrap map-wide" data-lakemap><p class="map-legend">Carte simplifiée, sans échelle.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer on-dark wave-top">
+    <div class="footer-sky" aria-hidden="true"></div>
+    <div class="wrap" style="position:relative">
+      <p class="footer-big">Prenez un moment <em>pour vous.</em></p>
+      <p class="actions" style="margin-top:28px">
+        <a class="btn btn--light magnetic" href="rendez-vous.html"><span class="btn-label">Prendre rendez-vous</span></a>
+        <button class="btn btn--ghost" type="button" data-breath-open style="--b-fg: var(--on-dark); box-shadow: inset 0 0 0 1.5px rgba(238,242,240,.5)"><span class="btn-label">Respirer une minute</span></button>
+      </p>
+      <div class="footer-grid">
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li class="contact-line"><a href="tel:+41793812467" class="val num">079 381 24 67</a><button class="copy" type="button" data-copy="079 381 24 67">Copier</button></li>
+            <li class="contact-line"><a href="mailto:contact@beathaechler.ch" class="val">contact@beathaechler.ch</a><button class="copy" type="button" data-copy="contact@beathaechler.ch">Copier</button></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Lieux</h2>
+          <address>
+            <strong>Jeudi · Nyon</strong><br>Ruelle de la Poterne 13, 1260 Nyon<br><br>
+            <strong>Mercredi et vendredi · Genève</strong><br>Bains des Pâquis, Quai du Mont-Blanc 30
+          </address>
+        </div>
+        <div>
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="massages.html">Les massages</a></li>
+            <li><a href="cours-de-massage.html">Cours de massage</a></li>
+            <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ce site</h2>
+          <ul>
+            <li><button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button></li>
+            <li><a href="confidentialite.html">Confidentialité et impressum</a></li>
+            <li class="small" style="color:var(--on-dark-soft)">Maquette : formulaires, réservations et paiements sont simulés, rien n'est envoyé.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <p>© 2026 Beat Hächler · Massage classique, membre FSMP</p>
+        <p>Photos : cabinet de Nyon et site actuel. Visuels d'ambiance générés pour la maquette.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="callbar" aria-label="Accès rapide">
+    <a class="btn btn--ghost" href="tel:+41793812467" aria-label="Appeler le 079 381 24 67"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn-label num">079 381 24 67</span></a>
+    <a class="btn" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
+  </div>
+
+  <div class="breath-dialog" id="breath-dialog" role="dialog" aria-modal="true" aria-labelledby="breath-title" hidden>
+    <button class="round-btn close" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="breath">
+      <p class="eyebrow" id="breath-title">Respirer une minute</p>
+      <div class="breath-stage" aria-hidden="true"><span class="breath-ring r2"></span><span class="breath-ring"></span><span class="breath-circle"></span><span class="breath-word">Prêt ?</span></div>
+      <p class="breath-count" aria-live="polite">Une minute, six respirations lentes.</p>
+      <button class="btn" type="button" data-breath-toggle aria-pressed="false"><span class="btn-label">Commencer</span></button>
+    </div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/SplitText.min.js"></script>
+  <script src="assets/vendor/CustomEase.min.js"></script>
+  <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

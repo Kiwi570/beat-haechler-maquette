@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr-CH" data-page="accueil">
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Beat Hächler Massages</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Massage relaxant, massage anti-tensions et drainage lymphatique par Beat Hächler, le jeudi à Nyon et le mercredi et le vendredi aux Bains des Pâquis à Genève.">
+  <meta name="theme-color" content="#E8ECEA">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="Beat Hächler, massages à Nyon et Genève">
+  <meta property="og:title" content="Beat Hächler Massages">
+  <meta property="og:description" content="Massage relaxant, massage anti-tensions et drainage lymphatique par Beat Hächler, le jeudi à Nyon et le mercredi et le vendredi aux Bains des Pâquis à Genève.">
+  <meta property="og:image" content="assets/img/grok/accueil-lac-aube-16x9-1168.webp">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function (d) {
+      var h = d.documentElement, c = null, r = false;
+      h.classList.add("js");
+      try { c = localStorage.getItem("bh-calm"); } catch (e) {}
+      try { r = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+      if (c === "1" || (c === null && r)) h.classList.add("calm");
+      try {
+        if (!sessionStorage.getItem("bh-visited") && h.getAttribute("data-page") === "accueil") h.classList.add("is-first");
+        if (sessionStorage.getItem("bh-veil") === "1") h.classList.add("is-veiled");
+      } catch (e) { if (h.getAttribute("data-page") === "accueil") h.classList.add("is-first"); }
+      setTimeout(function () { if (!h.classList.contains("app-ready")) h.classList.remove("is-first", "is-veiled"); }, 3500);
+    })(document);
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Beat Hächler, massages",
+    "description": "Massage relaxant, massage anti-tensions et drainage lymphatique à Nyon et à Genève.",
+    "telephone": "+41 79 381 24 67",
+    "email": "contact@beathaechler.ch",
+    "url": "https://www.beathaechler.ch",
+    "address": { "@type": "PostalAddress", "streetAddress": "Ruelle de la Poterne 13", "postalCode": "1260", "addressLocality": "Nyon", "addressCountry": "CH" },
+    "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday" }],
+    "priceRange": "CHF 70–100"
+  }
+  </script>
+
+</head>
+<body class="page-accueil">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="intro" aria-hidden="true"><div class="intro-drop"></div><p class="intro-word">Respirez</p></div>
+
+  <div class="veil" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="currentColor" d="M0 120 C 240 120 480 120 720 120 S 1200 120 1440 120 V 120 H 0 Z"/></svg>
+    <div class="veil-body"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Beat Hächler, accueil">
+      <img src="assets/img/site/logo-beat-haechler-1218.webp" srcset="assets/img/site/logo-beat-haechler-400.webp 400w, assets/img/site/logo-beat-haechler-800.webp 800w, assets/img/site/logo-beat-haechler-1218.webp 1218w" sizes="54px" width="1218" height="734" alt="" decoding="async" loading="eager" fetchpriority="high">
+      <span class="brand-text"><span class="brand-name">Beat Hächler</span><span class="brand-sub">Massages · Nyon &amp; Genève</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+          <li><a href="massages.html">Massages</a></li>
+          <li><a href="cours-de-massage.html">Cours</a></li>
+          <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+      </ul>
+    </nav>
+    <button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button>
+    <a class="btn btn--small btn-rdv magnetic" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+  </header>
+
+  <div class="menu on-dark" id="menu" hidden>
+    <nav aria-label="Menu">
+      <ul class="menu-list">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="massages.html">Les massages</a></li>
+        <li class="sub"><a href="massage-relaxant.html">Massage relaxant</a></li>
+        <li class="sub"><a href="massage-anti-tensions.html">Massage anti-tensions</a></li>
+        <li class="sub"><a href="drainage-lymphatique.html">Drainage lymphatique</a></li>
+        <li><a href="cours-de-massage.html">Cours de massage</a></li>
+        <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="rendez-vous.html">Rendez-vous</a></li>
+      </ul>
+    </nav>
+    <div class="menu-foot">
+      <p class="contact-line"><span class="val num">079 381 24 67</span> · <span class="val">contact@beathaechler.ch</span></p>
+      <p class="actions"><button class="btn btn--light btn--small" type="button" data-breath-open><span class="btn-label">Respirer une minute</span></button><button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button></p>
+    </div>
+  </div>
+
+  <main id="contenu">
+<section class="hero hero--top" data-tex="assets/img/grok/accueil-lac-aube-16x9-1168.webp" data-tex-m="assets/img/grok/accueil-lac-aube-9x16-784.webp" data-ratio="1168,784" data-ratio-m="784,1168" data-focus="0.5,0.62" data-drop="0.505,0.77" data-drop-m="0.29,0.74" data-water="0.6" data-disp="assets/img/grok/texture-eau-calme-800.webp" data-fog="#ECEDEB" data-tint="#C7B8AE" aria-labelledby="t-hero">
+      <canvas class="hero-gl" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"><img src="assets/img/grok/accueil-lac-aube-16x9-1168.webp" srcset="assets/img/grok/accueil-lac-aube-16x9-800.webp 800w, assets/img/grok/accueil-lac-aube-16x9-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="" decoding="async" loading="eager" fetchpriority="high"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow" data-hero-in>Massages à Nyon et à Genève</p>
+        <h1 class="display" id="t-hero" data-split>Prenez un moment <em>pour vous.</em></h1>
+        <p class="lede" data-hero-in>Je m'occupe du reste. Massage relaxant, massage anti-tensions et drainage lymphatique, par Beat Hächler.</p>
+        <div class="actions" data-hero-in>
+          <a class="btn magnetic" href="rendez-vous.html"><span class="btn-label">Prendre rendez-vous</span></a>
+          <a class="wlink" href="#guide">Trouver mon massage</a>
+        </div>
+      </div>
+      <div class="wrap hero-foot" data-hero-in>
+        <span class="chip"><span class="pulse" aria-hidden="true"></span><span data-today>Jeudi à Nyon · mercredi et vendredi à Genève</span></span>
+        <a class="scroll-cue" href="#bienvenue"><span class="drop" aria-hidden="true"></span>Défiler</a>
+      </div>
+    </section>
+
+    <section class="section section--fog welcome" id="bienvenue" aria-labelledby="t-bienvenue">
+      <div class="wrap grid-12">
+        <figure class="welcome-photo with-cap">
+          <div class="frame frame--pebble reveal-img" data-water-hover><img src="assets/img/site/portrait-beat-haechler-413.webp" srcset="assets/img/site/portrait-beat-haechler-413.webp 413w" sizes="(max-width: 860px) 320px, 420px" width="413" height="531" alt="Portrait de Beat Hächler, cheveux gris, souriant, devant un feuillage" decoding="async" loading="lazy"></div>
+          <figcaption class="cap">Beat Hächler, masseur à Nyon et à Genève</figcaption>
+        </figure>
+        <div class="welcome-text stack-lg">
+          <p class="eyebrow">Bonjour et bienvenue</p>
+          <h2 class="h2" id="t-bienvenue" data-split>Des massages <em>personnalisés,</em> pour lâcher prise ou soulager les tensions.</h2>
+          <div class="prose" data-reveal>
+            <p>Je vous propose des massages personnalisés, que ce soit pour lâcher prise, soulager les tensions musculaires ou soutenir votre bien-être global. Chaque massage s'adapte à vos besoins.</p>
+            <p>Enseignant de formation, j'ai fait du toucher mon métier à 50 ans. Je masse le jeudi à Nyon, dans la vieille ville, et le mercredi et le vendredi à Genève, aux Bains des Pâquis.</p>
+          </div>
+          <p class="signature" data-reveal>Beat Hächler</p>
+          <ul class="facts" data-reveal="stagger">
+            <li>Membre FSMP</li>
+            <li>Association Mains des Bains</li>
+            <li>Enseignant de formation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mist wave-top hscroll" data-hscroll aria-labelledby="t-massages">
+      <div class="wrap hscroll-head">
+        <div class="stack">
+          <p class="eyebrow">Les massages</p>
+          <h2 class="h2" id="t-massages" data-split>Trois approches, <em>une même attention.</em></h2>
+        </div>
+        <a class="wlink" href="massages.html">Comparer les trois massages</a>
+      </div>
+      <div class="hscroll-track">
+        <a class="mcard" href="massage-relaxant.html" data-cursor="Découvrir">
+          <div class="frame" data-water-hover><img src="assets/img/grok/relaxant-dos-lumiere-9x16-784.webp" srcset="assets/img/grok/relaxant-dos-lumiere-9x16-520.webp 520w, assets/img/grok/relaxant-dos-lumiere-9x16-784.webp 784w" sizes="(max-width: 899px) 90vw, 460px" width="784" height="1168" alt="Mains posées à plat sur le haut du dos d&#x27;une personne allongée, près d&#x27;une fenêtre voilée" decoding="async" loading="lazy"></div>
+          <span class="mcard-index">Lâcher prise</span>
+          <h3>Massage relaxant</h3>
+          <p>Des mouvements lents et enveloppants pour relâcher le stress du quotidien et retrouver la sensation d'habiter son corps.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="mcard" href="massage-anti-tensions.html" data-cursor="Découvrir">
+          <div class="frame" data-water-hover><img src="assets/img/grok/anti-tensions-ouverture-9x16-784.webp" srcset="assets/img/grok/anti-tensions-ouverture-9x16-520.webp 520w, assets/img/grok/anti-tensions-ouverture-9x16-784.webp 784w" sizes="(max-width: 899px) 90vw, 460px" width="784" height="1168" alt="Une main exerce une pression ciblée sur un muscle du dos" decoding="async" loading="lazy"></div>
+          <span class="mcard-index">Points gâchettes</span>
+          <h3>Massage anti-tensions</h3>
+          <p>Un travail ciblé sur les zones contractées et les points gâchettes, avec pression ischémique et Tecarthérapie si besoin.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="mcard" href="drainage-lymphatique.html" data-cursor="Découvrir">
+          <div class="frame" data-water-hover><img src="assets/img/grok/drainage-ouverture-9x16-784.webp" srcset="assets/img/grok/drainage-ouverture-9x16-520.webp 520w, assets/img/grok/drainage-ouverture-9x16-784.webp 784w" sizes="(max-width: 899px) 90vw, 460px" width="784" height="1168" alt="Deux mains glissent doucement sur la jambe d&#x27;une personne couverte d&#x27;un drap de lin" decoding="async" loading="lazy"></div>
+          <span class="mcard-index">Légèreté</span>
+          <h3>Drainage lymphatique</h3>
+          <p>Un massage doux et rythmé qui procure une sensation de légèreté, souvent apprécié quand les jambes sont lourdes.</p>
+          <span class="go">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <div class="hscroll-end">
+          <p class="h3">Vous hésitez entre deux massages&nbsp;?</p>
+          <p class="small">Montrez-moi où se logent vos tensions : le guide vous oriente en un geste.</p>
+          <p><a class="btn btn--ghost" href="#guide"><span class="btn-label">Trouver mon massage</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--fog wave-top" id="guide" aria-labelledby="t-guide">
+      <div class="wrap stack-lg">
+        <div class="stack">
+          <p class="eyebrow">Trouver mon massage</p>
+          <h2 class="h2" id="t-guide" data-split>Où sont vos <em>tensions&nbsp;?</em></h2>
+          <p class="lede">Touchez une zone de la silhouette, ou choisissez dans la liste : je vous indique le massage qui lui convient.</p>
+        </div>
+        <div class="guide" data-guide data-initial="nuque">
+          <div class="guide-figure" data-cursor="Choisir">
+            <div class="guide-bg" aria-hidden="true"><img src="assets/img/grok/texture-lin-1168.webp" srcset="assets/img/grok/texture-lin-800.webp 800w, assets/img/grok/texture-lin-1168.webp 1168w" sizes="(max-width: 860px) 100vw, 50vw" width="1168" height="784" alt="" decoding="async" loading="lazy"></div>
+            <svg class="bodymap" viewBox="0 0 240 520" role="group" aria-label="Silhouette de dos : choisissez une zone"></svg>
+            <figure class="guide-pebble frame frame--pebble" aria-hidden="true"><img src="assets/img/grok/mains-epaules-784.webp" srcset="assets/img/grok/mains-epaules-520.webp 520w, assets/img/grok/mains-epaules-784.webp 784w" sizes="200px" width="784" height="1168" alt="" decoding="async" loading="lazy"></figure>
+          </div>
+          <div class="stack">
+            <div class="guide-chips" role="group" aria-label="Choisir une zone">
+              <button class="zchip" type="button" data-zone="nuque" aria-pressed="true">Nuque et épaules</button>
+              <button class="zchip" type="button" data-zone="haut-dos" aria-pressed="false">Haut du dos</button>
+              <button class="zchip" type="button" data-zone="bas-dos" aria-pressed="false">Bas du dos</button>
+              <button class="zchip" type="button" data-zone="jambes" aria-pressed="false">Jambes lourdes</button>
+              <button class="zchip" type="button" data-zone="tete" aria-pressed="false">Stress, besoin de décrocher</button>
+              <button class="zchip" type="button" data-zone="?" aria-pressed="false">Je ne sais pas</button>
+            </div>
+            <div class="guide-result" aria-live="polite">
+              <p class="eyebrow">Nuque et épaules</p>
+              <p class="h3">Je vous conseille : Massage anti-tensions</p>
+              <p class="why">Nuque, épaules et trapèzes comptent parmi les zones de tension les plus fréquentes. Le massage cible les nœuds musculaires avec des pressions soutenues.</p>
+              <p class="actions"><a class="wlink" href="massage-anti-tensions.html">Découvrir le massage anti-tensions</a><a class="wlink" href="rendez-vous.html">Prendre rendez-vous</a></p>
+            </div>
+            <p class="small">Ce guide oriente, il ne pose pas de diagnostic. En cas de douleur persistante ou inhabituelle, consultez un médecin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--deep wave-top on-dark" aria-labelledby="t-tarifs">
+      <div class="wrap prices">
+        <div class="prices-head stack-lg">
+          <p class="eyebrow">Tarifs à Nyon</p>
+          <h2 class="h2" id="t-tarifs" data-split>Le temps <em>d'une pause.</em></h2>
+          <figure class="frame prices-visual reveal-img" data-water-hover><img src="assets/img/grok/huile-lin-784.webp" srcset="assets/img/grok/huile-lin-520.webp 520w, assets/img/grok/huile-lin-784.webp 784w" sizes="(max-width: 860px) 260px, 360px" width="784" height="1168" alt="Petit flacon ambré d&#x27;huile de massage posé sur du lin, quelques gouttes à côté" decoding="async" loading="lazy"></figure>
+        </div>
+        <div class="price-list">
+          <div class="price"><span class="price-dur">60 minutes</span><span class="price-dots" aria-hidden="true"></span><span class="price-val num"><span class="cur">CHF</span><span class="odo" data-value="100">100</span><span>.–</span></span></div>
+          <div class="price"><span class="price-dur">40 minutes</span><span class="price-dots" aria-hidden="true"></span><span class="price-val num"><span class="cur">CHF</span><span class="odo" data-value="70">70</span><span>.–</span></span></div>
+          <p class="price-note">Pas de remboursement par les assurances complémentaires.</p>
+          <p class="price-note">Aux Bains des Pâquis, à Genève : 50 minutes, CHF 80.–, au tarif de l'association Mains des Bains.</p>
+          <div class="actions" style="margin-top:26px">
+            <a class="btn btn--light magnetic" href="rendez-vous.html"><span class="btn-label">Prendre rendez-vous</span></a>
+            <a class="wlink" href="bons-cadeaux.html">Offrir un massage</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sand wave-top" aria-labelledby="t-cabinet">
+      <div class="wrap stack-lg">
+        <div class="split-2">
+          <div class="col-a stack">
+            <p class="eyebrow">Le cabinet</p>
+            <h2 class="h2" id="t-cabinet" data-split>Ruelle de la Poterne, <em>dans la vieille ville.</em></h2>
+          </div>
+          <div class="col-b prose" data-reveal>
+            <p>Le cabinet de Nyon se trouve Ruelle de la Poterne 13 : poutres anciennes, voûte en pierre et lumière douce. C'est là que je masse le jeudi et que se déroulent les cours de massage.</p>
+            <p class="note-block"><span class="note">Description à valider par Beat</span></p>
+          </div>
+        </div>
+        <div class="mosaic">
+          <figure class="m1 frame reveal-img" data-water-hover><img src="assets/img/site/table-planches-trigger-points-2800.webp" srcset="assets/img/site/table-planches-trigger-points-640.webp 640w, assets/img/site/table-planches-trigger-points-1200.webp 1200w, assets/img/site/table-planches-trigger-points-2000.webp 2000w, assets/img/site/table-planches-trigger-points-2800.webp 2800w" sizes="(max-width: 700px) 100vw, 58vw" width="2800" height="2142" alt="Table de massage orange et serviette, sous des planches anatomiques des points gâchettes" decoding="async" loading="lazy"></figure>
+          <figure class="m2 frame reveal-img" data-speed="0.12" data-water-hover><img src="assets/img/site/cabinet-entree-voute-800.webp" srcset="assets/img/site/cabinet-entree-voute-480.webp 480w, assets/img/site/cabinet-entree-voute-800.webp 800w" sizes="(max-width: 700px) 90vw, 40vw" width="800" height="600" alt="Pièce d&#x27;accueil du cabinet, poutres apparentes et porte vitrée sous une voûte en pierre" decoding="async" loading="lazy" style="object-position:60% 50%"></figure>
+          <figure class="m3 frame reveal-img" data-water-hover><img src="assets/img/site/table-lampe-de-sel-2800.webp" srcset="assets/img/site/table-lampe-de-sel-640.webp 640w, assets/img/site/table-lampe-de-sel-1200.webp 1200w, assets/img/site/table-lampe-de-sel-2000.webp 2000w, assets/img/site/table-lampe-de-sel-2800.webp 2800w" sizes="(max-width: 700px) 100vw, 34vw" width="2800" height="2100" alt="Table de massage, serviette et lampe de sel devant des placards en bois" decoding="async" loading="lazy"></figure>
+          <figure class="m4 frame reveal-img" data-speed="0.18" data-water-hover><img src="assets/img/site/cabinet-niche-flacons-800.webp" srcset="assets/img/site/cabinet-niche-flacons-480.webp 480w, assets/img/site/cabinet-niche-flacons-800.webp 800w" sizes="(max-width: 700px) 90vw, 25vw" width="800" height="600" alt="Niche éclairée avec des flacons colorés, contre l&#x27;arche en pierre" decoding="async" loading="lazy"></figure>
+          <figure class="m5 frame reveal-img" data-water-hover><img src="assets/img/site/flacons-huiles-2000.webp" srcset="assets/img/site/flacons-huiles-640.webp 640w, assets/img/site/flacons-huiles-1200.webp 1200w, assets/img/site/flacons-huiles-2000.webp 2000w" sizes="(max-width: 700px) 100vw, 34vw" width="2000" height="1500" alt="Flacons d&#x27;huiles et de brumes sur une étagère du cabinet" decoding="async" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--fog wave-top" aria-labelledby="t-lieux">
+      <div class="wrap stack-lg">
+        <div class="stack">
+          <p class="eyebrow">Deux lieux, trois jours</p>
+          <h2 class="h2" id="t-lieux" data-split>De Nyon <em>à Genève.</em></h2>
+        </div>
+        <div class="places">
+          <div class="map-wrap" data-lakemap><p class="map-legend">Carte simplifiée, sans échelle.</p></div>
+          <div class="place-cards" data-reveal="stagger">
+            <article class="place" data-place="nyon">
+              <p class="place-day">Le jeudi</p>
+              <h3>Nyon</h3>
+              <address>Ruelle de la Poterne 13<br>1260 Nyon</address>
+              <p class="small">60 min CHF 100.– · 40 min CHF 70.– · sur rendez-vous au <span class="num">079 381 24 67</span></p>
+            </article>
+            <article class="place" data-place="geneve">
+              <p class="place-day">Le mercredi et le vendredi</p>
+              <h3>Genève, Bains des Pâquis</h3>
+              <address>Quai du Mont-Blanc 30<br>1201 Genève</address>
+              <p class="small">Avec l'association Mains des Bains · 50 min CHF 80.– · réservation en ligne</p>
+            </article>
+            <p><a class="btn magnetic" href="rendez-vous.html"><span class="btn-label">Tous les détails pour réserver</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--mist wave-top" aria-labelledby="t-plus">
+      <div class="wrap stack-lg">
+        <div class="stack">
+          <p class="eyebrow">Apprendre et offrir</p>
+          <h2 class="h2" id="t-plus" data-split>Le toucher <em>se transmet.</em></h2>
+        </div>
+        <div class="duo">
+          <div class="tilt" data-reveal>
+            <a class="tcard" href="cours-de-massage.html" data-tilt="6" data-cursor="Voir le cours">
+              <div class="frame"><img src="assets/img/grok/cours-atelier-9x16-784.webp" srcset="assets/img/grok/cours-atelier-9x16-520.webp 520w, assets/img/grok/cours-atelier-9x16-784.webp 784w" sizes="(max-width: 760px) 100vw, 50vw" width="784" height="1168" alt="Mains d&#x27;une personne qui masse le bas du dos, dans une salle lumineuse au bord d&#x27;un lac" decoding="async" loading="lazy" style="object-position:50% 70%"></div>
+              <div class="tcard-body">
+                <p class="eyebrow">Cours de massage</p>
+                <h3>Apprendre à masser <em>en un week-end</em></h3>
+                <p class="meta"><span>Samedi et dimanche, 9h30 – 17h30</span><span>4 à 6 personnes</span><span>CHF 320.–</span></p>
+                <p class="small">Prochain cours en 2027 : inscrivez-vous pour être prévenu·e des dates.</p>
+              </div>
+              <span class="shine" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="tilt" data-reveal>
+            <a class="tcard" href="bons-cadeaux.html" data-tilt="6" data-cursor="Offrir">
+              <div class="frame gift-mini"><img src="assets/img/grok/lin-eucalyptus-16x9-1168.webp" srcset="assets/img/grok/lin-eucalyptus-16x9-800.webp 800w, assets/img/grok/lin-eucalyptus-16x9-1168.webp 1168w" sizes="(max-width: 760px) 100vw, 50vw" width="1168" height="784" alt="" decoding="async" loading="lazy"><img class="gift-mini-card" src="assets/img/site/bon-cadeau-recto-640.webp" width="640" height="427" alt="Recto du bon cadeau : le logo de Beat Hächler, une silhouette allongée dessinée en vert" loading="lazy" decoding="async"></div>
+              <div class="tcard-body">
+                <p class="eyebrow">Bons cadeaux</p>
+                <h3>Offrir <em>une heure de calme</em></h3>
+                <p class="meta"><span>1 massage de 60 min</span><span>CHF 100.–</span><span>Carte postale avec enveloppe</span></p>
+                <p class="small">Paiement par Twint, PayPal ou virement postal.</p>
+              </div>
+              <span class="shine" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer on-dark wave-top">
+    <div class="footer-sky" aria-hidden="true"></div>
+    <div class="wrap" style="position:relative">
+      <p class="footer-big">Prenez un moment <em>pour vous.</em></p>
+      <p class="actions" style="margin-top:28px">
+        <a class="btn btn--light magnetic" href="rendez-vous.html"><span class="btn-label">Prendre rendez-vous</span></a>
+        <button class="btn btn--ghost" type="button" data-breath-open style="--b-fg: var(--on-dark); box-shadow: inset 0 0 0 1.5px rgba(238,242,240,.5)"><span class="btn-label">Respirer une minute</span></button>
+      </p>
+      <div class="footer-grid">
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li class="contact-line"><a href="tel:+41793812467" class="val num">079 381 24 67</a><button class="copy" type="button" data-copy="079 381 24 67">Copier</button></li>
+            <li class="contact-line"><a href="mailto:contact@beathaechler.ch" class="val">contact@beathaechler.ch</a><button class="copy" type="button" data-copy="contact@beathaechler.ch">Copier</button></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Lieux</h2>
+          <address>
+            <strong>Jeudi · Nyon</strong><br>Ruelle de la Poterne 13, 1260 Nyon<br><br>
+            <strong>Mercredi et vendredi · Genève</strong><br>Bains des Pâquis, Quai du Mont-Blanc 30
+          </address>
+        </div>
+        <div>
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="massages.html">Les massages</a></li>
+            <li><a href="cours-de-massage.html">Cours de massage</a></li>
+            <li><a href="bons-cadeaux.html">Bons cadeaux</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="rendez-vous.html">Rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ce site</h2>
+          <ul>
+            <li><button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button></li>
+            <li><a href="confidentialite.html">Confidentialité et impressum</a></li>
+            <li class="small" style="color:var(--on-dark-soft)">Maquette : formulaires, réservations et paiements sont simulés, rien n'est envoyé.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <p>© 2026 Beat Hächler · Massage classique, membre FSMP</p>
+        <p>Photos : cabinet de Nyon et site actuel. Visuels d'ambiance générés pour la maquette.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="callbar" aria-label="Accès rapide">
+    <a class="btn btn--ghost" href="tel:+41793812467" aria-label="Appeler le 079 381 24 67"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn-label num">079 381 24 67</span></a>
+    <a class="btn" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
+  </div>
+
+  <div class="breath-dialog" id="breath-dialog" role="dialog" aria-modal="true" aria-labelledby="breath-title" hidden>
+    <button class="round-btn close" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="breath">
+      <p class="eyebrow" id="breath-title">Respirer une minute</p>
+      <div class="breath-stage" aria-hidden="true"><span class="breath-ring r2"></span><span class="breath-ring"></span><span class="breath-circle"></span><span class="breath-word">Prêt ?</span></div>
+      <p class="breath-count" aria-live="polite">Une minute, six respirations lentes.</p>
+      <button class="btn" type="button" data-breath-toggle aria-pressed="false"><span class="btn-label">Commencer</span></button>
+    </div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/SplitText.min.js"></script>
+  <script src="assets/vendor/CustomEase.min.js"></script>
+  <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
