@@ -1,17 +1,17 @@
 // Point d'entrée : orchestre l'ouverture, les effets communs et les effets propres à chaque page.
 /* global gsap, ScrollTrigger, SplitText */
-import { initCore, state, session } from "./core.js";
-import { initWater } from "./water.js";
-import * as ui from "./ui.js";
-import { initReveals, initOdometers, initHScroll } from "./reveal.js";
-import { initGuide } from "./fx/bodymap.js";
-import { initTriggers } from "./fx/trigger.js";
-import { initTecar } from "./fx/tecar.js";
-import { initLakeMap } from "./fx/lakemap.js";
-import { initGestures } from "./fx/gestures.js";
-import { initBreath } from "./fx/breath.js";
-import { initBooking, initWaitlist, initGiftOrder } from "./fx/forms.js";
-import { initGift } from "./fx/gift.js";
+import { initCore, state, session } from "./core.js?v=20261027";
+import { initWater } from "./water.js?v=20261027";
+import * as ui from "./ui.js?v=20261027";
+import { initReveals, initOdometers, initHScroll } from "./reveal.js?v=20261027";
+import { initGuide } from "./fx/bodymap.js?v=20261027";
+import { initTriggers } from "./fx/trigger.js?v=20261027";
+import { initTecar } from "./fx/tecar.js?v=20261027";
+import { initLakeMap } from "./fx/lakemap.js?v=20261027";
+import { initGestures } from "./fx/gestures.js?v=20261027";
+import { initBreath } from "./fx/breath.js?v=20261027";
+import { initBooking, initWaitlist, initGiftOrder } from "./fx/forms.js?v=20261027";
+import { initGift } from "./fx/gift.js?v=20261027";
 
 const html = document.documentElement;
 const safety = setTimeout(() => html.classList.remove("is-first", "is-veiled"), 6000);

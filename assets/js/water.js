@@ -2,7 +2,7 @@
 // Le curseur ou le doigt crée des ondes ; une brume qui respire passe sur l'image ;
 // à l'ouverture, la brume se retire en cercle depuis le point où tombe la goutte.
 import { Renderer, Program, Mesh, Triangle, Texture } from "../vendor/ogl.min.mjs";
-import { state } from "./core.js";
+import { state } from "./core.js?v=20261027";
 
 const vertex = /* glsl */ `
 attribute vec2 uv;

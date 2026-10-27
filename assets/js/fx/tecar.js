@@ -1,5 +1,5 @@
 // « Ondes Tecar » : cercles concentriques qui émanent de l'électrode.
-import { state } from "../core.js";
+import { state } from "../core.js?v=20261027";
 
 export function initTecar(root) {
   const canvas = root.querySelector("canvas");

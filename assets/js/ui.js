@@ -1,7 +1,7 @@
 // Interface commune : curseur, boutons, en-tête, menu, transitions de page, copie, « aujourd'hui ».
 /* global gsap, ScrollTrigger */
-import { state, setCalm, session, scrollToTarget } from "./core.js";
-import { aujourdhui, texteAujourdhui, DATA, JOURS } from "./data.js";
+import { state, setCalm, session, scrollToTarget } from "./core.js?v=20261027";
+import { aujourdhui, texteAujourdhui, DATA, JOURS } from "./data.js?v=20261027";
 
 /* ---------- Curseur « pulpe du doigt » ---------- */
 export function initCursor() {

@@ -1,8 +1,8 @@
 // « Pression et relâchement » : maintenir l'appui sur un point gâchette remplit un anneau ;
 // au relâchement, une onde chaude se diffuse (l'afflux qui suit la pression ischémique).
 /* global gsap */
-import { bodyBase } from "./bodymap.js";
-import { state } from "../core.js";
+import { bodyBase } from "./bodymap.js?v=20261027";
+import { state } from "../core.js?v=20261027";
 
 const NS = "http://www.w3.org/2000/svg";
 const POINTS = [
