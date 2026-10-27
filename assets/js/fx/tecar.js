@@ -1,6 +1,5 @@
-// « Ondes Tecar » : cercles concentriques qui émanent de l'électrode,
-// et tracé illustratif des courants TENS et EMS.
-import { state, onVisible } from "../core.js";
+// « Ondes Tecar » : cercles concentriques qui émanent de l'électrode.
+import { state } from "../core.js";
 
 export function initTecar(root) {
   const canvas = root.querySelector("canvas");
@@ -62,82 +61,4 @@ export function initTecar(root) {
     root.addEventListener("pointerleave", () => { speed = 1; });
     loop();
   }
-}
-
-export function initScope(root) {
-  const canvas = root.querySelector("canvas");
-  const buttons = root.querySelectorAll("[data-wave]");
-  const desc = root.querySelector("[data-wave-desc]");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let mode = "tens";
-  let w = 0, h = 0, visible = false;
-  const texts = {
-    tens: "TENS : des impulsions brèves et régulières qui stimulent les nerfs, utilisées pour leur effet apaisant.",
-    ems: "EMS : des trains d'impulsions qui font travailler le muscle par contractions, puis le laissent se reposer.",
-  };
-
-  function size() {
-    const r = canvas.getBoundingClientRect();
-    w = r.width; h = r.height;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    draw(state.calm ? 0 : performance.now());
-  }
-
-  function signal(x) {
-    if (mode === "tens") {
-      const period = 34;
-      const p = ((x % period) + period) % period;
-      if (p < 3) return 0.85;
-      if (p < 6) return -0.55;
-      return 0;
-    }
-    const cycle = 420;
-    const c = ((x % cycle) + cycle) % cycle;
-    let env = 0;
-    if (c < 80) env = c / 80;
-    else if (c < 220) env = 1;
-    else if (c < 300) env = 1 - (c - 220) / 80;
-    const p = ((x % 9) + 9) % 9;
-    const pulse = p < 2 ? 1 : (p < 4 ? -0.6 : 0);
-    return pulse * env * 0.9;
-  }
-
-  function draw(ms) {
-    ctx.clearRect(0, 0, w, h);
-    const mid = h / 2;
-    ctx.strokeStyle = "rgba(238,242,240,0.12)";
-    ctx.lineWidth = 1;
-    for (let gx = 0; gx < w; gx += 28) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, h); ctx.stroke(); }
-    ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
-    const shift = state.calm ? 0 : (ms / 1000) * 90;
-    ctx.beginPath();
-    for (let x = 0; x <= w; x += 1) {
-      const y = mid - signal(x + shift) * (h * 0.4);
-      if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    }
-    ctx.strokeStyle = "#E08F6B";
-    ctx.lineWidth = 2;
-    ctx.lineJoin = "round";
-    ctx.stroke();
-  }
-
-  function loop() {
-    requestAnimationFrame(loop);
-    if (!visible || document.hidden) return;
-    draw(performance.now());
-  }
-
-  buttons.forEach((b) => b.addEventListener("click", () => {
-    mode = b.dataset.wave;
-    buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    if (desc) desc.textContent = texts[mode];
-    if (state.calm) draw(0);
-  }));
-  new ResizeObserver(size).observe(canvas);
-  if ("IntersectionObserver" in window) new IntersectionObserver((e) => { visible = e[0].isIntersecting; }).observe(canvas);
-  else visible = true;
-  if (!state.calm) onVisible(canvas, loop, "100px");
 }

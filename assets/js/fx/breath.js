@@ -41,7 +41,7 @@ export function initBreath(root) {
     gsap.to(circle, { scale: 0.55, duration: state.calm ? 0 : 1.2 });
     lbl.textContent = "Commencer";
     btn.setAttribute("aria-pressed", "false");
-    word.textContent = "Prêt ?";
+    word.textContent = "Prêt ?";
     count.textContent = "Une minute, six respirations lentes.";
   }
 

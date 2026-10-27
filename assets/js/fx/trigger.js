@@ -17,21 +17,17 @@ const POINTS = [
 const HOLD = 2.2; // secondes de pression pour relâcher un point
 
 export function initTriggers(root) {
-  const reset = root.querySelector("[data-tp-reset]");
-  if (reset) reset.addEventListener("click", () => build(root));
   build(root);
 }
 
 function build(root) {
   const svg = root.querySelector(".bodymap");
-  const countEl = root.querySelector("[data-tp-count]");
   const hintEl = root.querySelector("[data-tp-hint]");
   if (!svg) return;
   gsap.killTweensOf(svg.querySelectorAll("circle"));
   svg.innerHTML = bodyBase('<radialGradient id="warm"><stop offset="0" stop-color="#E08F6B" stop-opacity=".7"/><stop offset=".55" stop-color="#E08F6B" stop-opacity=".22"/><stop offset="1" stop-color="#E08F6B" stop-opacity="0"/></radialGradient>');
   const waves = document.createElementNS(NS, "g");
   svg.appendChild(waves);
-  let released = 0;
   const C = 2 * Math.PI * 11;
 
   POINTS.forEach((p) => {
@@ -54,7 +50,7 @@ function build(root) {
       if (done) return;
       g.classList.add("is-pressing");
       if (breathe) breathe.pause();
-      if (hintEl) hintEl.textContent = "Pression ischémique : on maintient jusqu'au relâchement du point…";
+      if (hintEl) hintEl.textContent = "Pression ischémique : on maintient jusqu'au relâchement du point…";
       tween = gsap.to(fill, { attr: { "stroke-dashoffset": 0 }, duration: state.calm ? HOLD : HOLD, ease: "none", onComplete: releaseOk });
       gsap.to(core, { attr: { r: 3 }, duration: 0.6 });
     }
@@ -65,24 +61,29 @@ function build(root) {
       gsap.to(fill, { attr: { "stroke-dashoffset": C }, duration: 0.5 });
       gsap.to(core, { attr: { r: 4.6 }, duration: 0.5 });
       if (breathe) breathe.resume();
-      if (hintEl) hintEl.textContent = "Relâché trop tôt : maintenez un peu plus longtemps.";
+      if (hintEl) hintEl.textContent = "Relâché trop tôt : maintenez un peu plus longtemps.";
     }
     function releaseOk() {
       done = true;
       g.classList.remove("is-pressing");
       g.classList.add("is-released");
-      g.setAttribute("aria-label", `Point gâchette, ${p.label} : relâché.`);
-      released++;
-      if (countEl) countEl.textContent = `${released} / ${POINTS.length}`;
-      if (hintEl) hintEl.textContent = released === POINTS.length
-        ? "Tous les points sont relâchés. En séance, plusieurs passages sont parfois nécessaires."
-        : "Relâché : le sang afflue à nouveau, le muscle se détend.";
+      g.setAttribute("aria-label", `Point gâchette, ${p.label} : relâché.`);
+      if (hintEl) hintEl.textContent = "Relâché\u202f: le sang afflue à nouveau, le muscle se détend.";
       const w = document.createElementNS(NS, "circle");
       w.setAttribute("class", "tp-wave"); w.setAttribute("cx", p.x); w.setAttribute("cy", p.y); w.setAttribute("r", "8");
       waves.appendChild(w);
       gsap.fromTo(w, { attr: { r: 8 }, opacity: 1 }, { attr: { r: state.calm ? 40 : 70 }, opacity: 0, duration: state.calm ? 0.01 : 2.4, ease: "power2.out", onComplete: () => w.remove() });
       gsap.to(fill, { opacity: 0, duration: 0.8, delay: 0.3 });
       gsap.to(core, { attr: { r: 5 }, duration: 0.8, ease: "elastic.out(1,.4)" });
+      // le point se réarme doucement : on peut recommencer quand on veut
+      setTimeout(() => {
+        done = false;
+        g.classList.remove("is-released");
+        g.setAttribute("aria-label", `Point gâchette, ${p.label}. Maintenez l'appui pour presser.`);
+        gsap.set(fill, { attr: { "stroke-dashoffset": C }, opacity: 1 });
+        gsap.to(core, { attr: { r: 4.6 }, duration: 0.6 });
+        if (breathe) breathe.resume();
+      }, 6000);
     }
 
     g.addEventListener("pointerdown", (e) => { g.setPointerCapture && g.setPointerCapture(e.pointerId); press(e); });
@@ -94,6 +95,5 @@ function build(root) {
     g.addEventListener("keyup", (e) => { if ((e.key === " " || e.key === "Enter") && tween && tween.progress() < 1) cancel(); });
   });
 
-  if (countEl) countEl.textContent = `0 / ${POINTS.length}`;
   if (hintEl) hintEl.textContent = "Maintenez l'appui sur un point pendant deux secondes.";
 }

@@ -1,7 +1,7 @@
 // Interface commune : curseur, boutons, en-tête, menu, transitions de page, copie, « aujourd'hui ».
 /* global gsap, ScrollTrigger */
 import { state, setCalm, session, scrollToTarget } from "./core.js";
-import { aujourdhui, texteAujourdhui, DATA } from "./data.js";
+import { aujourdhui, texteAujourdhui, DATA, JOURS } from "./data.js";
 
 /* ---------- Curseur « pulpe du doigt » ---------- */
 export function initCursor() {
@@ -30,12 +30,15 @@ export function initCursor() {
     const ring = document.createElement("div");
     ring.className = "cursor-ring";
     ring.style.left = e.clientX + "px"; ring.style.top = e.clientY + "px";
+    if (cursor.classList.contains("is-dark")) ring.classList.add("is-dark");
     document.body.appendChild(ring);
     gsap.fromTo(ring, { scale: 0.6, opacity: 0.9 }, { scale: 4.2, opacity: 0, duration: 1.1, ease: "power2.out", onComplete: () => ring.remove() });
   });
   window.addEventListener("pointerup", () => gsap.to(dot, { scaleX: 1, scaleY: 1, duration: 0.6, ease: "elastic.out(1, .45)" }));
 
+  const DARK = ".on-dark, .section--deep, .site-footer, .menu, .trigger-stage, .map-wrap, .band";
   document.addEventListener("pointerover", (e) => {
+    cursor.classList.toggle("is-dark", !!(e.target.closest && e.target.closest(DARK)));
     const t = e.target.closest("[data-cursor], a, button, .zone, .tp, label.opt");
     if (!t) { cursor.classList.remove("is-hover", "is-label"); return; }
     const txt = t.getAttribute("data-cursor");
@@ -46,28 +49,33 @@ export function initCursor() {
 }
 
 /* ---------- Boutons : onde au survol, effet magnétique ---------- */
-export function initButtons() {
-  document.querySelectorAll(".btn").forEach((btn) => {
-    if (!btn.querySelector(".btn-ripple")) {
-      const r = document.createElement("span");
-      r.className = "btn-ripple"; r.setAttribute("aria-hidden", "true");
-      btn.prepend(r);
-    }
-    const ripple = btn.querySelector(".btn-ripple");
-    btn.addEventListener("pointerenter", (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left, y = e.clientY - rect.top;
-      const size = Math.hypot(Math.max(x, rect.width - x), Math.max(y, rect.height - y)) * 2.2 / 10;
-      gsap.killTweensOf(ripple);
-      gsap.set(ripple, { left: x, top: y });
-      gsap.to(ripple, { scale: size, duration: state.calm ? 0 : 0.6, ease: "power2.out" });
-    });
-    btn.addEventListener("pointerleave", (e) => {
-      const rect = btn.getBoundingClientRect();
-      gsap.set(ripple, { left: e.clientX - rect.left, top: e.clientY - rect.top });
-      gsap.to(ripple, { scale: 0, duration: state.calm ? 0 : 0.5, ease: "power2.in" });
-    });
+/** Onde au survol d'un bouton (aussi pour les boutons ajoutés après coup). */
+export function bindButton(btn) {
+  if (btn.dataset.bound) return;
+  btn.dataset.bound = "1";
+  if (!btn.querySelector(".btn-ripple")) {
+    const r = document.createElement("span");
+    r.className = "btn-ripple"; r.setAttribute("aria-hidden", "true");
+    btn.prepend(r);
+  }
+  const ripple = btn.querySelector(".btn-ripple");
+  btn.addEventListener("pointerenter", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    const size = Math.hypot(Math.max(x, rect.width - x), Math.max(y, rect.height - y)) * 2.2 / 10;
+    gsap.killTweensOf(ripple);
+    gsap.set(ripple, { left: x, top: y });
+    gsap.to(ripple, { scale: size, duration: state.calm ? 0 : 0.6, ease: "power2.out" });
   });
+  btn.addEventListener("pointerleave", (e) => {
+    const rect = btn.getBoundingClientRect();
+    gsap.set(ripple, { left: e.clientX - rect.left, top: e.clientY - rect.top });
+    gsap.to(ripple, { scale: 0, duration: state.calm ? 0 : 0.5, ease: "power2.in" });
+  });
+}
+
+export function initButtons() {
+  document.querySelectorAll(".btn").forEach(bindButton);
 
   if (!state.fine || state.calm) return;
   document.querySelectorAll(".magnetic").forEach((el) => {
@@ -227,22 +235,32 @@ export function initCalmToggles() {
 
 /* ---------- Copier téléphone / e-mail ---------- */
 export function initCopy() {
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   document.querySelectorAll("[data-copy]").forEach((btn) => {
+    const icon = btn.classList.contains("copy--icon");
     btn.addEventListener("click", async () => {
       const text = btn.dataset.copy;
-      const old = btn.textContent;
+      const oldHtml = btn.innerHTML;
+      const oldLabel = btn.getAttribute("aria-label");
+      let msg = "Copié";
       try {
         await navigator.clipboard.writeText(text);
-        btn.textContent = "Copié";
       } catch (e) {
         const val = btn.parentElement.querySelector(".val");
         if (val) {
           const range = document.createRange(); range.selectNodeContents(val);
           const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
         }
-        btn.textContent = "Sélectionné";
+        msg = "Sélectionné";
       }
-      setTimeout(() => { btn.textContent = old; }, 1600);
+      btn.classList.add("is-done");
+      if (icon) { btn.innerHTML = CHECK; btn.setAttribute("aria-label", msg); }
+      else btn.textContent = msg;
+      setTimeout(() => {
+        btn.classList.remove("is-done");
+        btn.innerHTML = oldHtml;
+        if (oldLabel) btn.setAttribute("aria-label", oldLabel);
+      }, 1600);
     });
   });
 }
@@ -250,24 +268,52 @@ export function initCopy() {
 /* ---------- Aujourd'hui : Nyon, Genève ou pas de consultation ---------- */
 export function initToday() {
   const info = aujourdhui();
-  document.querySelectorAll("[data-today]").forEach((el) => { el.textContent = texteAujourdhui(info); });
+  const page = document.documentElement.dataset.page;
+  // le lieu « utile » : celui du jour, sinon le prochain
+  const cible = info.lieu || info.prochain.lieu;
+  document.querySelectorAll("[data-today]").forEach((el) => {
+    el.textContent = texteAujourdhui(info);
+    const chip = el.closest("a.chip");
+    if (chip) chip.setAttribute("href", `rendez-vous.html#${cible}`);
+  });
+  document.querySelectorAll("[data-today-date]").forEach((el) => {
+    try {
+      el.textContent = "Aujourd'hui · " + new Intl.DateTimeFormat("fr-CH", { weekday: "long", day: "numeric", month: "long", timeZone: DATA.fuseau }).format(new Date());
+    } catch (e) { /* le texte par défaut reste */ }
+  });
   document.querySelectorAll("[data-today-title]").forEach((el) => {
-    el.textContent = info.lieu ? `Aujourd'hui, Beat est à ${DATA.lieux[info.lieu].nom}.` : `Pas de consultation aujourd'hui.`;
+    if (info.lieu === "nyon") el.textContent = "Aujourd'hui, je suis au cabinet de Nyon.";
+    else if (info.lieu === "geneve") el.textContent = "Aujourd'hui, je suis aux Bains des Pâquis.";
+    else {
+      const p = info.prochain;
+      const quand = p.dans === 1 ? "demain" : JOURS[p.jour];
+      el.textContent = `Prochains massages ${quand}, à ${DATA.lieux[p.lieu].nom}.`;
+    }
   });
   document.querySelectorAll("[data-today-next]").forEach((el) => {
-    if (info.lieu) {
-      el.textContent = info.lieu === "nyon"
-        ? "Jeudi à Nyon, Ruelle de la Poterne 13. Appelez pour savoir s'il reste un créneau."
-        : "Mercredi et vendredi aux Bains des Pâquis : réservation en ligne auprès de l'association.";
-    } else {
-      const p = info.prochain;
-      const quand = p.dans === 1 ? "Demain" : "Prochaine consultation " + ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"][p.jour];
-      el.textContent = `${quand} à ${DATA.lieux[p.lieu].nom}.`;
-    }
+    el.textContent = cible === "nyon"
+      ? "À Nyon, on réserve par téléphone : appelez-moi, je vous dis s'il reste un créneau."
+      : "À Genève, on réserve en ligne sur l'agenda de l'association Mains des Bains.";
+  });
+  // l'action principale suit le lieu du jour
+  document.querySelectorAll("[data-rdv-actions]").forEach((wrap) => {
+    wrap.querySelectorAll("[data-act]").forEach((b) => {
+      const main = b.dataset.act === cible;
+      b.classList.toggle("is-primary", main);
+      b.classList.toggle("btn--ghost", !main);
+    });
   });
   document.querySelectorAll("[data-place]").forEach((el) => {
     el.classList.toggle("is-today", el.dataset.place === info.lieu);
   });
+  // barre d'appel : sur la page rendez-vous, le second bouton mène à l'agenda de Genève
+  const cta = document.querySelector("[data-callbar-cta]");
+  if (cta && page === "rendez-vous") {
+    cta.setAttribute("href", DATA.lieux.geneve.agenda);
+    cta.setAttribute("target", "_blank");
+    cta.setAttribute("rel", "noopener");
+    cta.querySelector(".btn-label").textContent = "Genève en ligne";
+  }
   return info;
 }
 
@@ -291,5 +337,13 @@ export function initBreathDialog(startBreath) {
     dlg.querySelector(".close").focus();
   }));
   dlg.querySelector(".close").addEventListener("click", close);
-  dlg.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  dlg.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+    if (e.key === "Tab") { // le focus reste dans la fenêtre
+      const items = Array.from(dlg.querySelectorAll("button"));
+      const i = items.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+      else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus(); }
+    }
+  });
 }

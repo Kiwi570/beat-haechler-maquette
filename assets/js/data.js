@@ -62,12 +62,11 @@ export function aujourdhui(date = new Date()) {
 }
 
 export function texteAujourdhui(info = aujourdhui()) {
-  if (info.lieu) {
-    return `Aujourd'hui ${info.nomJour}, Beat consulte à ${DATA.lieux[info.lieu].nom}`;
-  }
+  if (info.lieu === "nyon") return "Aujourd'hui, je masse à Nyon";
+  if (info.lieu === "geneve") return "Aujourd'hui, je masse aux Bains des Pâquis";
   const p = info.prochain;
   const quand = p.dans === 1 ? "demain" : JOURS[p.jour];
-  return `Aujourd'hui ${info.nomJour} : pas de consultation · ${quand} à ${DATA.lieux[p.lieu].nom}`;
+  return `Prochains massages\u202f: ${quand} à ${DATA.lieux[p.lieu].nom}`;
 }
 
 /** Les n prochains jeudis (pour la demande de rendez-vous à Nyon). */

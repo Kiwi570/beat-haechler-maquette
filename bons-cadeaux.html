@@ -14,12 +14,17 @@
   <meta property="og:site_name" content="Beat Hächler, massages à Nyon et Genève">
   <meta property="og:title" content="Bons cadeaux massage">
   <meta property="og:description" content="Offrez un massage de 60 minutes avec Beat Hächler : bon cadeau au format carte postale, avec enveloppe, CHF 100.–, payable par Twint, PayPal ou virement postal.">
-  <meta property="og:image" content="assets/img/grok/lin-eucalyptus-16x9-1168.webp">
+  <meta property="og:image" content="https://beat-haechler-maquette.vercel.app/assets/img/og/lin-eucalyptus-16x9.jpg">
+  <meta property="og:url" content="https://beat-haechler-maquette.vercel.app/bons-cadeaux">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/fraunces-var.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="assets/fonts/manrope-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="image" href="assets/img/grok/lin-eucalyptus-16x9-1168.webp" media="(min-aspect-ratio: 9/10)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/grok/lin-eucalyptus-9x16-784.webp" media="(max-aspect-ratio: 9/10)" fetchpriority="high">
   <script>
     (function (d) {
       var h = d.documentElement, c = null, r = false;
@@ -46,7 +51,7 @@
 
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Beat Hächler, accueil">
-      <img src="assets/img/site/logo-beat-haechler-1218.webp" srcset="assets/img/site/logo-beat-haechler-400.webp 400w, assets/img/site/logo-beat-haechler-800.webp 800w, assets/img/site/logo-beat-haechler-1218.webp 1218w" sizes="54px" width="1218" height="734" alt="" decoding="async" loading="eager" fetchpriority="high">
+      <img src="assets/img/site/logo-beat-haechler-480.webp" srcset="assets/img/site/logo-beat-haechler-240.webp 240w, assets/img/site/logo-beat-haechler-480.webp 480w" sizes="54px" width="480" height="285" alt="" decoding="async" loading="eager" fetchpriority="high">
       <span class="brand-text"><span class="brand-name">Beat Hächler</span><span class="brand-sub">Massages · Nyon &amp; Genève</span></span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
@@ -57,7 +62,7 @@
           <li><a href="a-propos.html">À propos</a></li>
       </ul>
     </nav>
-    <button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button>
+    <a class="header-tel num" href="tel:+41793812467">079 381 24 67</a>
     <a class="btn btn--small btn-rdv magnetic" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
   </header>
@@ -85,7 +90,7 @@
   <main id="contenu">
 <section class="hero hero--gift" data-tex="assets/img/grok/lin-eucalyptus-16x9-1168.webp" data-tex-m="assets/img/grok/lin-eucalyptus-9x16-784.webp" data-ratio="1168,784" data-ratio-m="784,1168" data-focus="0.5,0.5" data-drop="0.5,0.5" data-drop-m="0.5,0.5" data-fog="#F1F1EE" data-tint="#E4D3C6" aria-labelledby="t-hero">
       <canvas class="hero-gl" aria-hidden="true"></canvas>
-      <div class="hero-fallback" aria-hidden="true"><img src="assets/img/grok/lin-eucalyptus-16x9-1168.webp" srcset="assets/img/grok/lin-eucalyptus-16x9-800.webp 800w, assets/img/grok/lin-eucalyptus-16x9-1168.webp 1168w" sizes="100vw" width="1168" height="784" alt="" decoding="async" loading="eager" fetchpriority="high"></div>
+      <div class="hero-fallback" aria-hidden="true"><picture><source media="(max-aspect-ratio: 9/10)" srcset="assets/img/grok/lin-eucalyptus-9x16-784.webp"><img src="assets/img/grok/lin-eucalyptus-16x9-1168.webp" alt="" decoding="async" fetchpriority="high"></picture></div>
       <div class="wrap hero-inner">
         <p class="eyebrow" data-hero-in>Bons cadeaux</p>
         <h1 class="display" id="t-hero" data-split>Offrir <em>une heure de calme.</em></h1>
@@ -96,7 +101,6 @@
         </div>
       </div>
       <div class="gift-stage" data-gift data-hero-in>
-        <p class="gift-hint">Touchez la carte pour la retourner</p>
         <div class="envelope">
           <div class="env-back"></div>
           <div class="gcard" role="button" tabindex="0" aria-pressed="false" aria-label="Bon cadeau : retourner la carte" data-cursor="Retourner">
@@ -107,6 +111,7 @@
           <div class="env-flap"></div>
           <p class="env-name" aria-live="polite"></p>
         </div>
+        <p class="gift-hint">Touchez la carte pour la retourner</p>
       </div>
     </section>
 
@@ -118,8 +123,9 @@
             <h2 class="h2" id="t-bon" data-split>Une carte, <em>une enveloppe, une heure.</em></h2>
           </div>
           <div class="col-b prose" data-reveal>
-            <p>Le bon cadeau donne droit à un massage de 60 minutes. Il se présente au format carte postale, avec son enveloppe : la personne qui le reçoit choisit ensuite son massage et prend rendez-vous.</p>
-            <p class="note-block"><span class="note">À vérifier sur la carte</span><span class="small">Le recto indique le 078 610 46 76, alors que le site affiche le 079 381 24 67. Le verso porte « Valable jusqu'à xxx » : la durée de validité est à compléter.</span></p>
+            <p>Mon bon cadeau donne droit à un massage de 60 minutes. Il se présente au format carte postale, avec son enveloppe.</p>
+            <p>La personne qui le reçoit choisit son massage, relaxant, anti-tensions ou drainage lymphatique, puis prend rendez-vous avec moi.</p>
+            <p class="note-block"><span class="note">À vérifier sur la carte</span><span class="small">Le recto indique le 078 610 46 76, alors que le site affiche le 079 381 24 67. Le verso porte « Valable jusqu'à xxx » : la durée de validité est à compléter.</span></p>
           </div>
         </div>
         <div class="facts-grid" data-reveal="stagger">
@@ -135,9 +141,9 @@
       <div class="wrap split-2" style="align-items:start">
         <div class="col-a stack-lg sticky-col">
           <p class="eyebrow">Commander</p>
-          <h2 class="h2" id="t-commander" data-split>En trois <em>étapes.</em></h2>
+          <h2 class="h2" id="t-commander" data-split>En trois étapes.</h2>
           <p class="lede">Le prénom saisi s'écrit sur l'enveloppe, plus haut.</p>
-          <p class="note-block"><span class="note">Option à valider : Beat écrit-il le prénom sur l'enveloppe ?</span></p>
+          <p class="note-block"><span class="note">Option à valider : Beat écrit-il le prénom sur l'enveloppe ?</span></p>
         </div>
         <div class="col-b">
           <div class="form-card">
@@ -146,7 +152,7 @@
             </ol>
             <form data-giftorder novalidate>
               <fieldset class="fieldset" data-step>
-                <legend>Combien de bons ?</legend>
+                <legend>Combien de bons ?</legend>
                 <div class="field">
                   <span class="lbl" id="q-lbl">Nombre de massages de 60 minutes</span>
                   <div class="actions" role="group" aria-labelledby="q-lbl">
@@ -155,10 +161,10 @@
                     <button class="round-btn" type="button" data-qty="1" aria-label="Un bon de plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
                   </div>
                 </div>
-                <p class="h3">Total : <span class="num" data-total>CHF 100.–</span></p>
+                <p class="h3">Total : <span class="num" data-total>CHF 100.–</span></p>
               </fieldset>
               <fieldset class="fieldset" data-step hidden>
-                <legend>Pour qui ?</legend>
+                <legend>Pour qui ?</legend>
                 <div class="fields-2">
                   <div class="field"><label for="g-pour">Prénom de la personne qui reçoit</label><input id="g-pour" name="pour" autocomplete="off"></div>
                   <div class="field"><label for="g-de">De la part de</label><input id="g-de" name="de" autocomplete="name"></div>
@@ -172,8 +178,8 @@
                   <label class="opt"><input type="radio" name="paiement" value="PayPal"><span><b>PayPal</b><small>Compte PayPal ou carte</small></span></label>
                   <label class="opt"><input type="radio" name="paiement" value="Virement postal"><span><b>Virement postal</b><small>Modalités à préciser par Beat</small></span></label>
                 </div>
-                <p class="h3">À payer : <span class="num" data-total>CHF 100.–</span></p>
-                <p class="small">Démonstration : aucun paiement n'est effectué.</p>
+                <p class="h3">À payer : <span class="num" data-total>CHF 100.–</span></p>
+                <p class="small">Démonstration : aucun paiement n'est effectué.</p>
               </fieldset>
               <div class="form-nav" style="margin-top:20px">
                 <button class="btn btn--ghost" type="button" data-prev hidden><span class="btn-label">Retour</span></button>
@@ -190,27 +196,26 @@
   <footer class="site-footer on-dark wave-top">
     <div class="footer-sky" aria-hidden="true"></div>
     <div class="wrap" style="position:relative">
-      <p class="footer-big">Prenez un moment <em>pour vous.</em></p>
+      <p class="footer-big">À bientôt, <em>au bord du lac.</em></p>
       <p class="actions" style="margin-top:28px">
         <a class="btn btn--light magnetic" href="rendez-vous.html"><span class="btn-label">Prendre rendez-vous</span></a>
-        <button class="btn btn--ghost" type="button" data-breath-open style="--b-fg: var(--on-dark); box-shadow: inset 0 0 0 1.5px rgba(238,242,240,.5)"><span class="btn-label">Respirer une minute</span></button>
       </p>
       <div class="footer-grid">
         <div>
           <h2>Contact</h2>
           <ul>
-            <li class="contact-line"><a href="tel:+41793812467" class="val num">079 381 24 67</a><button class="copy" type="button" data-copy="079 381 24 67">Copier</button></li>
-            <li class="contact-line"><a href="mailto:contact@beathaechler.ch" class="val">contact@beathaechler.ch</a><button class="copy" type="button" data-copy="contact@beathaechler.ch">Copier</button></li>
+            <li class="contact-line"><a href="tel:+41793812467" class="val num">079 381 24 67</a><button class="copy copy--icon" type="button" data-copy="079 381 24 67" aria-label="Copier le numéro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button></li>
+            <li class="contact-line"><a href="mailto:contact@beathaechler.ch" class="val">contact@beathaechler.ch</a><button class="copy copy--icon" type="button" data-copy="contact@beathaechler.ch" aria-label="Copier l'adresse e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button></li>
           </ul>
         </div>
         <div>
           <h2>Lieux</h2>
           <address>
-            <strong>Jeudi · Nyon</strong><br>Ruelle de la Poterne 13, 1260 Nyon<br><br>
-            <strong>Mercredi et vendredi · Genève</strong><br>Bains des Pâquis, Quai du Mont-Blanc 30
+            <strong>Jeudi · Nyon</strong><br><span class="nw">Ruelle de la Poterne 13</span>, <span class="nw">1260 Nyon</span><br><br>
+            <strong>Mercredi et vendredi · Genève</strong><br><span class="nw">Bains des Pâquis</span>, <span class="nw">Quai du Mont-Blanc 30</span>
           </address>
         </div>
-        <div>
+        <div class="footer-pages">
           <h2>Pages</h2>
           <ul>
             <li><a href="massages.html">Les massages</a></li>
@@ -225,27 +230,27 @@
           <ul>
             <li><button class="calm-toggle" type="button" aria-pressed="false"><span class="tgl" aria-hidden="true"></span>Animations calmes</button></li>
             <li><a href="confidentialite.html">Confidentialité et impressum</a></li>
-            <li class="small" style="color:var(--on-dark-soft)">Maquette : formulaires, réservations et paiements sont simulés, rien n'est envoyé.</li>
+            <li class="small" style="color:var(--on-dark-soft)">Maquette : formulaires, réservations et paiements sont simulés, rien n'est envoyé.</li>
           </ul>
         </div>
       </div>
       <div class="footer-base">
         <p>© 2026 Beat Hächler · Massage classique, membre FSMP</p>
-        <p>Photos : cabinet de Nyon et site actuel. Visuels d'ambiance générés pour la maquette.</p>
+        <p>Photos : cabinet de Nyon et site actuel. Visuels d'ambiance générés pour la maquette.</p>
       </div>
     </div>
   </footer>
 
   <div class="callbar" aria-label="Accès rapide">
     <a class="btn btn--ghost" href="tel:+41793812467" aria-label="Appeler le 079 381 24 67"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span class="btn-label num">079 381 24 67</span></a>
-    <a class="btn" href="rendez-vous.html"><span class="btn-label">Rendez-vous</span></a>
+    <a class="btn" href="rendez-vous.html" data-callbar-cta><span class="btn-label">Rendez-vous</span></a>
   </div>
 
   <div class="breath-dialog" id="breath-dialog" role="dialog" aria-modal="true" aria-labelledby="breath-title" hidden>
     <button class="round-btn close" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="breath">
       <p class="eyebrow" id="breath-title">Respirer une minute</p>
-      <div class="breath-stage" aria-hidden="true"><span class="breath-ring r2"></span><span class="breath-ring"></span><span class="breath-circle"></span><span class="breath-word">Prêt ?</span></div>
+      <div class="breath-stage" aria-hidden="true"><span class="breath-ring r2"></span><span class="breath-ring"></span><span class="breath-circle"></span><span class="breath-word">Prêt ?</span></div>
       <p class="breath-count" aria-live="polite">Une minute, six respirations lentes.</p>
       <button class="btn" type="button" data-breath-toggle aria-pressed="false"><span class="btn-label">Commencer</span></button>
     </div>

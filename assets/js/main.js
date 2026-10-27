@@ -6,8 +6,7 @@ import * as ui from "./ui.js";
 import { initReveals, initOdometers, initHScroll } from "./reveal.js";
 import { initGuide } from "./fx/bodymap.js";
 import { initTriggers } from "./fx/trigger.js";
-import { initTecar, initScope } from "./fx/tecar.js";
-import { initFlow } from "./fx/flow.js";
+import { initTecar } from "./fx/tecar.js";
 import { initLakeMap } from "./fx/lakemap.js";
 import { initGestures } from "./fx/gestures.js";
 import { initBreath } from "./fx/breath.js";
@@ -41,13 +40,11 @@ const water = hero ? safe("water", () => initWater(hero)) : null;
 document.querySelectorAll("[data-guide]").forEach((el) => safe("guide", () => initGuide(el)));
 document.querySelectorAll("[data-triggers]").forEach((el) => safe("triggers", () => initTriggers(el)));
 document.querySelectorAll("[data-tecar]").forEach((el) => safe("tecar", () => initTecar(el)));
-document.querySelectorAll("[data-scope]").forEach((el) => safe("scope", () => initScope(el)));
 document.querySelectorAll("[data-lakemap]").forEach((el) => safe("lakemap", () => initLakeMap(el)));
 document.querySelectorAll("[data-gestures]").forEach((el) => safe("gestures", () => initGestures(el)));
 document.querySelectorAll(".breath[data-inline]").forEach((el) => safe("breath", () => initBreath(el)));
 document.querySelectorAll("form[data-booking]").forEach((el) => safe("booking", () => initBooking(el)));
 document.querySelectorAll("form[data-waitlist]").forEach((el) => safe("waitlist", () => initWaitlist(el)));
-if (html.dataset.page === "drainage") safe("flow", initFlow);
 
 const giftStage = document.querySelector("[data-gift]");
 const gift = giftStage ? safe("gift", () => initGift(giftStage)) : null;
@@ -61,11 +58,7 @@ document.querySelectorAll("[data-quotes]").forEach((wrap) => safe("quotes", () =
   wrap.querySelector("[data-q-next]")?.addEventListener("click", () => list.scrollBy({ left: step(), behavior: state.calm ? "auto" : "smooth" }));
 }));
 
-// journées du cours : les barres se remplissent de 9h30 à 17h30
 if (!state.calm) {
-  gsap.utils.toArray(".wbar span").forEach((bar, i) => {
-    gsap.from(bar, { scaleX: 0, duration: 2.2, delay: i * 0.3, ease: "power2.inOut", scrollTrigger: { trigger: bar, start: "top 90%", once: true } });
-  });
   gsap.utils.toArray("[data-float]").forEach((el, i) => {
     gsap.to(el, { y: i % 2 ? 10 : -10, duration: 3 + (i % 3), yoyo: true, repeat: -1, ease: "sine.inOut" });
   });

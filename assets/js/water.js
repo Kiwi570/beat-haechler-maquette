@@ -140,7 +140,7 @@ export function initWater(section) {
 
   let renderer;
   try {
-    renderer = new Renderer({ canvas, dpr: Math.min(window.devicePixelRatio || 1, state.touch ? 1.3 : 1.6), alpha: false, antialias: false, powerPreference: "high-performance" });
+    renderer = new Renderer({ canvas, dpr: 1, alpha: false, antialias: false, powerPreference: "high-performance" });
   } catch (e) {
     section.classList.add("no-webgl");
     return null;
@@ -190,15 +190,31 @@ export function initWater(section) {
 
   const start = performance.now();
   const now = () => (performance.now() - start) / 1000;
+  // contexte graphique perdu (onglet en arrière-plan sur mobile, pilote) : on bascule sur l'image fixe
+  let lost = false;
+  let dprScale = 1;
+  canvas.addEventListener("webglcontextlost", (e) => { e.preventDefault(); lost = true; section.classList.add("no-webgl"); });
+  canvas.addEventListener("webglcontextrestored", () => { window.location.reload(); });
   let visible = true;
   let raf = 0;
   let needsFrame = true;
 
+  // Résolution de rendu adaptée à l'image : au-delà de la définition de la texture, on calcule des pixels
+  // que l'œil ne voit pas. On reste entre 0,75 et 1,5 pixel physique par pixel CSS.
+  function fitDpr(r) {
+    const [tw, th] = uniforms.uTexSize.value;
+    const ra = r.width / Math.max(1, r.height), ta = tw / th;
+    const cssCover = ra > ta ? r.width : r.height * ta; // largeur CSS de l'image une fois recadrée
+    const ideal = tw / Math.max(1, cssCover);
+    return Math.max(0.75, Math.min(1.5, ideal * 1.15, window.devicePixelRatio || 1));
+  }
   function resize() {
     const r = section.getBoundingClientRect();
+    chooseSource();
+    renderer.dpr = Math.max(0.5, fitDpr(r) * dprScale);
     renderer.setSize(Math.max(1, r.width), Math.max(1, r.height));
     uniforms.uRes.value = [gl.canvas.width, gl.canvas.height];
-    chooseSource();
+    placeDrop();
     needsFrame = true;
     if (state.calm) draw();
   }
@@ -251,18 +267,47 @@ export function initWater(section) {
     uniforms.uTime.value = state.calm ? 6 : now();
     uniforms.uBreath.value = breathAt(uniforms.uTime.value);
     renderer.render({ scene: mesh });
+    needsFrame = false;
   }
 
-  function loop() {
+  // Au repos (aucune onde récente), la brume bouge si lentement que 30 images par seconde suffisent.
+  let frame = 0;
+  let lastRipple = -10;
+  // Régulateur : si l'appareil peine (images trop lentes), on baisse la résolution, puis la cadence.
+  let quality = 2; // 2 = normal, 1 = allégé, 0 = image fixe hors interaction
+  let samples = 0, sum = 0, prevT = 0;
+  function govern(t) {
+    if (prevT) { sum += Math.min(100, t - prevT); samples++; }
+    prevT = t;
+    if (samples < 24) return;
+    const avg = sum / samples;
+    samples = 0; sum = 0;
+    if (avg > 30 && quality > 0) {
+      quality--;
+      dprScale = quality === 1 ? 0.7 : 0.55;
+      resize();
+    }
+  }
+  function loop(t) {
     raf = requestAnimationFrame(loop);
-    if (!visible || document.hidden) return;
+    if (!visible || document.hidden || lost) { prevT = 0; return; }
+    govern(t || performance.now()); // mesure l'intervalle réel entre deux images du navigateur
+    frame++;
+    const busy = now() - lastRipple < 4 || uniforms.uReveal.value < 1 || uniforms.uTexMix.value < 1;
+    // après un redimensionnement, le tampon est vide : on redessine toujours au moins une image
+    if (!needsFrame) {
+      if (!busy && quality === 0) return;
+      if (!busy && frame % 2) return;
+      if (quality === 1 && frame % 2) return;
+    }
     draw();
   }
 
   function addRipple(x, y, strength = 0.4) {
     if (state.calm) return;
     const i = (rIndex++ % 10) * 4;
-    ripplesArr[i] = x; ripplesArr[i + 1] = y; ripplesArr[i + 2] = now(); ripplesArr[i + 3] = strength;
+    lastRipple = now();
+    ripplesArr[i] = x; ripplesArr[i + 1] = y; ripplesArr[i + 2] = lastRipple; ripplesArr[i + 3] = strength;
   }
 
   // pointeur : petites ondes en mouvement, grande onde à l'appui
@@ -307,7 +352,7 @@ export function initWater(section) {
   if (window.ScrollTrigger && !state.calm) {
     window.ScrollTrigger.create({
       trigger: section, start: "top top", end: "bottom top", scrub: true,
-      onUpdate: (self) => { uniforms.uScroll.value = self.progress; },
+      onUpdate: (self) => { uniforms.uScroll.value = self.progress; needsFrame = true; },
     });
   }
 

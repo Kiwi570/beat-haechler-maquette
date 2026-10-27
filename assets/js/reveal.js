@@ -96,6 +96,13 @@ export function initReveals() {
     gsap.fromTo(el, { yPercent: s * 50 }, { yPercent: -s * 50, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } });
   });
 
+  // bandes plein écran : l'image glisse plus lentement que la page et se resserre
+  gsap.utils.toArray("[data-band]").forEach((band) => {
+    const media = band.querySelector(".band-media");
+    if (!media) return;
+    gsap.fromTo(media, { yPercent: -7, scale: 1.12 }, { yPercent: 7, scale: 1, ease: "none", scrollTrigger: { trigger: band, start: "top bottom", end: "bottom top", scrub: true } });
+  });
+
   // ligne de frise qui se dessine
   gsap.utils.toArray(".tl-line").forEach((line) => {
     gsap.to(line, { scaleY: 1, ease: "none", scrollTrigger: { trigger: line.parentElement, start: "top 70%", end: "bottom 60%", scrub: true } });
@@ -121,7 +128,7 @@ export function initOdometers() {
     if (state.calm) { el.textContent = value; return; }
     gsap.set(cols.map((c) => c.col), { y: 0 });
     gsap.to(cols.map((c) => c.col), {
-      y: (i) => `${-cols[i].n}em`,
+      y: (i) => `${-cols[i].n * 1.15}em`,
       duration: 1.8, stagger: 0.12, ease: "power3.inOut",
       scrollTrigger: { trigger: el, start: "top 90%", once: true },
       onComplete: () => { el.textContent = value; }, // texte simple ensuite : crénage naturel

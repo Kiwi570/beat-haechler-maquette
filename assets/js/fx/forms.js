@@ -78,7 +78,7 @@ export function initBooking(form) {
   if (dates) {
     dates.innerHTML = prochainsJeudis(6).map((d, k) => {
       const iso = d.toISOString().slice(0, 10);
-      return `<label class="opt"><input type="radio" name="date" value="${iso}" ${k === 0 ? "required" : ""} data-label="${formatDate(d)}"><span><b>${formatDate(d)}</b><small>Nyon · créneau à confirmer</small></span></label>`;
+      return `<label class="opt"><input type="radio" name="date" value="${iso}" ${k === 0 ? "required" : ""} data-label="${formatDate(d)}"><span><b>${formatDate(d)}</b><small>Nyon · créneau à confirmer</small></span></label>`;
     }).join("");
   }
   form._stepper = stepper(form, {
@@ -86,7 +86,7 @@ export function initBooking(form) {
       const dateInput = form.querySelector('input[name="date"]:checked');
       const items = [
         ["Massage", fd.get("massage")],
-        ["Durée", fd.get("duree") ? `${fd.get("duree")} min · ${chf(fd.get("duree") === "60" ? 100 : 70)}` : "—"],
+        ["Durée", fd.get("duree") ? `${fd.get("duree")} min · ${chf(fd.get("duree") === "60" ? 100 : 70)}` : "—"],
         ["Jour", dateInput ? dateInput.dataset.label : "—"],
         ["Moment", fd.get("moment") || "—"],
         ["Nom", `${fd.get("prenom")} ${fd.get("nom")}`],
@@ -95,7 +95,7 @@ export function initBooking(form) {
       finish(form, `<p class="demo-flag">Démonstration · rien n'a été envoyé</p>
         <p class="h3">Votre demande est prête, ${esc(fd.get("prenom"))}.</p>
         <ul class="summary">${items.map(([k, v]) => `<li><span>${k}</span><span>${esc(v)}</span></li>`).join("")}</ul>
-        <p class="small">Sur le vrai site, Beat recevrait cette demande et confirmerait l'heure. Pour réserver aujourd'hui : <strong class="num">${DATA.telephone}</strong>.</p>`);
+        <p class="small">Sur le vrai site, Beat recevrait cette demande et confirmerait l'heure. Pour réserver aujourd'hui : <strong class="num">${DATA.telephone}</strong>.</p>`);
     },
   });
 }
