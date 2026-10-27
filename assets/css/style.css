@@ -1005,3 +1005,8 @@ a.chip:hover .pulse { background: var(--coral); }
 
 /* bons cadeaux : le texte du héros aligné sur la grille des autres pages */
 @media (min-width: 901px) { .hero--gift .hero-inner { padding-left: max(40px, calc((100vw - var(--maxw)) / 2 + 40px)); } }
+
+/* En-tête lisible au-dessus des photos dont le haut est sombre */
+.hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: -1; pointer-events: none;
+  height: calc(var(--header-h) + 110px + env(safe-area-inset-top, 0px));
+  background: linear-gradient(to bottom, rgba(244, 246, 245, .86) 0%, rgba(244, 246, 245, .6) 45%, rgba(244, 246, 245, 0) 100%); }

@@ -1,8 +1,8 @@
 // Formulaires simulés : demande de rendez-vous à Nyon, liste d'attente du cours, commande de bon cadeau.
 // Rien n'est envoyé : chaque formulaire se termine par un récapitulatif clairement marqué « démonstration ».
 /* global gsap */
-import { state } from "../core.js?v=20261027";
-import { DATA, prochainsJeudis, formatDate, chf } from "../data.js?v=20261027";
+import { state } from "../core.js?v=20261027b";
+import { DATA, prochainsJeudis, formatDate, chf } from "../data.js?v=20261027b";
 
 function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 

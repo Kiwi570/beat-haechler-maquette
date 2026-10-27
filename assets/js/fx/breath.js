@@ -1,6 +1,6 @@
 // « Respiration guidée » : 4 secondes d'inspiration, 6 secondes d'expiration, pendant une minute.
 /* global gsap */
-import { state } from "../core.js?v=20261027";
+import { state } from "../core.js?v=20261027b";
 
 export function initBreath(root) {
   const circle = root.querySelector(".breath-circle");

@@ -1,8 +1,8 @@
 // « De Nyon à Genève » : carte simplifiée du Petit-Lac ; la rive se dessine au défilement
 // entre les deux lieux et le lieu du jour pulse.
 /* global gsap */
-import { state } from "../core.js?v=20261027";
-import { aujourdhui } from "../data.js?v=20261027";
+import { state } from "../core.js?v=20261027b";
+import { aujourdhui } from "../data.js?v=20261027b";
 
 export const LAKE_SVG = `
 <svg class="lakemap" viewBox="0 0 600 500" role="img" aria-labelledby="lakemap-t lakemap-d">
