@@ -1,7 +1,7 @@
 // Bon cadeau : la carte postale (vrais visuels) sort de son enveloppe, s'incline sous le curseur
 // et se retourne d'un clic pour montrer le verso.
 /* global gsap */
-import { state } from "../core.js?v=20261027b";
+import { state } from "../core.js?v=20261028";
 
 export function initGift(root) {
   const env = root.querySelector(".envelope");
