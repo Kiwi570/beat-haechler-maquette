@@ -1,8 +1,8 @@
 // « Les quatre gestes » : effleurage, pétrissage, friction, glissé profond,
 // chacun tracé par une ligne qui imite le mouvement de la main.
 /* global gsap */
-import { GESTES } from "./gesture-paths.js?v=20261028";
-import { state } from "../core.js?v=20261028";
+import { GESTES } from "./gesture-paths.js?v=20261028-2";
+import { state } from "../core.js?v=20261028-2";
 
 const NS = "http://www.w3.org/2000/svg";
 const STYLE = {

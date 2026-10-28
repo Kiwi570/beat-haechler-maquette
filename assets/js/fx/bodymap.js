@@ -1,8 +1,8 @@
 // « Où sont vos tensions ? » : une silhouette de dos dont chaque zone oriente vers le bon massage.
 /* global gsap */
-import { BODY_PATH, HEAD } from "./body-shape.js?v=20261028";
-import { state } from "../core.js?v=20261028";
-import { bindButton } from "../ui.js?v=20261028";
+import { BODY_PATH, HEAD } from "./body-shape.js?v=20261028-2";
+import { state } from "../core.js?v=20261028-2";
+import { bindButton } from "../ui.js?v=20261028-2";
 
 const NS = "http://www.w3.org/2000/svg";
 

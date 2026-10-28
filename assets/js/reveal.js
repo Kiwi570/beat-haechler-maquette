@@ -1,7 +1,7 @@
 // Révélations au défilement : titres ligne par ligne, images qui ondulent puis se figent,
 // parallaxe, chiffres à rouleaux, galerie horizontale épinglée.
 /* global gsap, ScrollTrigger, SplitText */
-import { state } from "./core.js?v=20261028";
+import { state } from "./core.js?v=20261028-2";
 
 let filterId = 0;
 let svgDefs = null;

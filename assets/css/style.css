@@ -1010,3 +1010,42 @@ a.chip:hover .pulse { background: var(--coral); }
 .hero::before { content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: -1; pointer-events: none;
   height: calc(var(--header-h) + 110px + env(safe-area-inset-top, 0px));
   background: linear-gradient(to bottom, rgba(244, 246, 245, .86) 0%, rgba(244, 246, 245, .6) 45%, rgba(244, 246, 245, 0) 100%); }
+
+/* =====================================================================
+   Étape 2 : corrections après audit
+   ===================================================================== */
+
+/* en-tête : le sous-titre ne passe plus sous le bouton Menu (361 à 400 px) */
+@media (max-width: 400px) { .brand-sub { display: none; } }
+
+/* en-tête : GSAP anime l'entrée, la transition CSS ne garde que le masquage au défilement */
+.site-header.is-intro { transition: background-color .4s, box-shadow .4s; }
+
+/* colonne collante : elle tient dans l'écran sous l'en-tête, l'image prend la place restante */
+@media (min-width: 861px) {
+  .sticky-col:has(> .frame) { display: flex; flex-direction: column; max-height: calc(100svh - var(--header-h) - 60px); }
+  .sticky-col > .frame { flex: 1 1 auto; min-height: 0; }
+  .sticky-col > .frame img { height: 100%; }
+}
+@media (min-width: 861px) and (max-height: 600px) {
+  .sticky-col:has(> .frame) { gap: 1rem; }
+  .sticky-col:has(> .frame) .h2 { font-size: var(--step-3); }
+}
+
+/* rendez-vous : la phrase du jour réserve ses deux lignes (pas de saut au chargement) */
+.today-big .h3 { min-height: 2.3em; }
+.today-big [data-today-next] { min-height: 3.3em; }
+
+/* barre d'appel : la place réservée suit sa hauteur réelle (--barres-h, mesurée en JS) */
+@media (max-width: 760px) { .site-footer { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px) + var(--barres-h, 0px)); } }
+
+/* cibles tactiles d'au moins 44 px sur téléphone et tablette */
+@media (max-width: 1080px) {
+  .wlink, .chip, .contact-line .val, .footer-grid a, .footer-base a, .calm-toggle, .site-footer .calm-toggle { min-height: 44px; display: inline-flex; align-items: center; }
+  .wlink { padding-top: .28em; background-position: 0 calc(100% - 6px); }
+  .wlink:hover { background-position: 72px calc(100% - 6px); }
+  .copy, .copy--icon { min-height: 44px; }
+  .copy--icon { width: 44px; height: 44px; }
+  .btn--small { min-height: 44px; }
+  .footer-grid ul { gap: 0; }
+}

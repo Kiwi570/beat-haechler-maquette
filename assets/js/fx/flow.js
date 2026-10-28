@@ -1,6 +1,6 @@
 // « Flux de lumière » (page drainage) : des filets lumineux coulent doucement le long de la page,
 // des bords vers le centre ; le défilement accélère leur course.
-import { state } from "../core.js?v=20261028";
+import { state } from "../core.js?v=20261028-2";
 
 const NS = "http://www.w3.org/2000/svg";
 

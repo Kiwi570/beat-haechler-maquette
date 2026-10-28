@@ -1,7 +1,7 @@
 // Interface commune : curseur, boutons, en-tête, menu, transitions de page, copie, « aujourd'hui ».
 /* global gsap, ScrollTrigger */
-import { state, setCalm, session, scrollToTarget } from "./core.js?v=20261028";
-import { aujourdhui, texteAujourdhui, DATA, JOURS } from "./data.js?v=20261028";
+import { state, setCalm, session, scrollToTarget } from "./core.js?v=20261028-2";
+import { aujourdhui, texteAujourdhui, DATA, JOURS } from "./data.js?v=20261028-2";
 
 /* ---------- Curseur « pulpe du doigt » ---------- */
 export function initCursor() {
@@ -123,13 +123,39 @@ export function initHeader() {
     const down = y > lastY && y > 240;
     if (Math.abs(y - lastY) > 6) {
       header.classList.toggle("is-hidden", down && !document.documentElement.classList.contains("menu-open"));
-      if (callbar) callbar.classList.toggle("is-hidden", !down && y < 200);
     }
     lastY = y;
   };
-  if (callbar) callbar.classList.add("is-hidden");
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+  if (callbar) initCallbar(callbar);
+}
+
+/* ---------- Barre d'appel (téléphone) : seulement une fois le héros passé,
+   jamais sur un formulaire, le pied de page, le menu ouvert ou la page introuvable ---------- */
+function initCallbar(callbar) {
+  const html = document.documentElement;
+  const seen = new Set();
+  let heroVisible = !!document.querySelector(".hero");
+  const update = () => {
+    const hide = heroVisible || seen.size > 0 || html.classList.contains("menu-open") || state.page === "introuvable";
+    callbar.classList.toggle("is-hidden", hide);
+  };
+  // hauteur réelle de la barre, réservée sous le dernier bloc
+  const measure = () => html.style.setProperty("--barres-h", callbar.offsetHeight + "px");
+  measure();
+  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(callbar);
+  else window.addEventListener("resize", measure);
+  update();
+  if (!("IntersectionObserver" in window)) return;
+  const hero = document.querySelector(".hero");
+  if (hero) new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; update(); }).observe(hero);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    update();
+  });
+  document.querySelectorAll("form, .site-footer").forEach((el) => io.observe(el));
+  new MutationObserver(update).observe(html, { attributes: true, attributeFilter: ["class"] });
 }
 
 /* ---------- Menu plein écran ---------- */
